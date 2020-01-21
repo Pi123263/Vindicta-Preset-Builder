@@ -2,7 +2,6 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -111,7 +110,6 @@ public class GUIPresetBuilder extends JFrame {
 	private JTextField tfInf_recon_LAT;
 	private JTextField tfInf_recon_marksman;
 	private JTextField tfInf_recon_medic;
-	public String Text;
 
 	/**
 	 * Launch the application.
@@ -923,7 +921,7 @@ public class GUIPresetBuilder extends JFrame {
 		JButton btnHelp = new JButton("Help");
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null,"This Preset Builder works by entering the classnames copied stright from the 3DEN Editor into the fitting Classname field and then clicking the 'Generate' Button, then a save window will open which lets you select a location for the preset file to be saved.");
+				JOptionPane.showMessageDialog(null,"This Preset Builder works by entering the classnames copied stright from the 3den Editor into the fitting Classname and then clicking thr 'Generate' Button.");
 			}
 		});
 		btnHelp.setBounds(392, 502, 175, 20);
@@ -966,133 +964,120 @@ public class GUIPresetBuilder extends JFrame {
 		tfInf_recon_medic.setColumns(10);
 		tfInf_recon_medic.setBounds(284, 282, 86, 18);
 		contentPane.add(tfInf_recon_medic);
-		
-		JLabel lblVindictaPresetBuilder = new JLabel("Vindicta Preset Builder made by Pi123263");
-		lblVindictaPresetBuilder.setBounds(393, 544, 384, 14);
-		contentPane.add(lblVindictaPresetBuilder);
 	}
 	public void Generate() throws IOException {
-		FileWriter Schreib;
-		JFileChooser filechooser = new JFileChooser();
-		//Start of preset text generation
+		// TODO Auto-generated method stub
+		String Text;
 		Text = 	  "/*"																				+"\r\n"
 				+ tfFactionName.getText()+" template for Arma III Vindicta"							+"\r\n"
-				+ ""																				+"\r\n"
 				+ "*/"																				+"\r\n"
+				+ ""																				+"\r\n"
 				+ "_array = [];"																	+"\r\n"
 				+ ""																				+"\r\n"
 				+ "_array set [T_Size-1, nil];"														+"\r\n"
 				+ ""																				+"\r\n"
 				+ "//==== Infantry ===="															+"\r\n"
 				+ "_inf = [];"																		+"\r\n"
-				+ "_inf resize T_INF_SIZE;"															+"\r\n";
+				+ "_inf resize T_INF_SIZE;"															+"\r\n"
 				//Units start here			
-				setInfantryArray("T_INF_DEFAULT", tfInf_Default);
-				setInfantryArray("T_INF_SL", tfInf_SL);
-				setInfantryArray("T_INF_TL", tfInf_TL);
-				setInfantryArray("T_INF_officer", tfInf_officer);
-				setInfantryArray("T_INF_GL", tfInf_GL);
-				setInfantryArray("T_INF_rifleman", tfInf_rifleman);
-				setInfantryArray("T_INF_marksman", tfInf_marksman);
-				setInfantryArray("T_INF_sniper", tfInf_sniper);
-				setInfantryArray("T_INF_spotter", tfInf_spotter);
-				setInfantryArray("T_INF_exp", tfInf_exp);
-				setInfantryArray("T_INF_ammo", tfInf_ammo);
-				setInfantryArray("T_INF_LAT", tfInf_LAT);
-				setInfantryArray("T_INF_AT", tfInf_AT);
-				setInfantryArray("tfInf_AA",tfInf_AA );
-				setInfantryArray("tfInf_LMG",tfInf_LMG );
-				setInfantryArray("tfInf_HMG",tfInf_HMG );
-				setInfantryArray("tfInf_medic",tfInf_medic );
-				setInfantryArray("tfInf_engineer",tfInf_engineer );
-				setInfantryArray("tfInf_crew",tfInf_crew );
-				setInfantryArray("tfInf_crew_heli",tfInf_crew_heli );
-				setInfantryArray("tfInf_pilot",tfInf_pilot );
-				setInfantryArray("tfInf_pilot_heli",tfInf_pilot_heli );
-				setInfantryArray("tfInf_survivor",tfInf_survivor );
-				setInfantryArray("tfInf_unarmed",tfInf_unarmed );
-				Text = Text
+				+ "_inf set [T_INF_DEFAULT, ["+tfInf_Default.getText()+"]];"						+"\r\n"
+				+ "_inf set [T_INF_SL, ["+tfInf_SL.getText()+"]];"									+"\r\n"
+				+ "_inf set [T_INF_TL, ["+tfInf_TL.getText()+"]];"									+"\r\n"
+				+ "_inf set [T_INF_officer, ["+tfInf_officer.getText()+"]];"						+"\r\n"
+				+ "_inf set [T_INF_GL, ["+tfInf_GL.getText()+"]];"									+"\r\n"
+				+ "_inf set [T_INF_rifleman, ["+tfInf_rifleman.getText()+"]];"						+"\r\n"
+				+ "_inf set [T_INF_marksman, ["+tfInf_marksman.getText()+"]];"						+"\r\n"
+				+ "_inf set [T_INF_sniper, ["+tfInf_spotter.getText()+"]];"							+"\r\n"
+				+ "_inf set [T_INF_spotter, ["+tfInf_spotter.getText()+"]];"						+"\r\n"
+				+ "_inf set [T_INF_exp, ["+tfInf_exp.getText()+"]];"								+"\r\n"
+				+ "_inf set [T_INF_ammo, ["+tfInf_ammo.getText()+"]];"								+"\r\n"
+				+ "_inf set [T_INF_LAT, ["+tfInf_LAT.getText()+"]];"								+"\r\n"
+				+ "_inf set [T_INF_AT, ["+tfInf_AT.getText()+"]];"									+"\r\n"
+				+ "_inf set [T_INF_AA, ["+tfInf_AA.getText()+"]];"									+"\r\n"
+				+ "_inf set [T_INF_LMG, ["+tfInf_LMG.getText()+"]];"								+"\r\n"
+				+ "_inf set [T_INF_HMG, ["+tfInf_HMG.getText()+"]];"								+"\r\n"
+				+ "_inf set [T_INF_medic, ["+tfInf_medic.getText()+"]];"							+"\r\n"
+				+ "_inf set [T_INF_engineer, ["+tfInf_engineer.getText()+"]];"						+"\r\n"
+				+ "_inf set [T_INF_crew, ["+tfInf_crew.getText()+"]];"								+"\r\n"
+				+ "_inf set [T_INF_crew_heli, ["+tfInf_crew_heli.getText()+"]];"					+"\r\n"
+				+ "_inf set [T_INF_pilot, ["+tfInf_pilot.getText()+"]];"							+"\r\n"
+				+ "_inf set [T_INF_pilot_heli, ["+tfInf_pilot_heli.getText()+"]];"					+"\r\n"
+				+ "_inf set [T_INF_survivor, ["+tfInf_survivor.getText()+"]];"						+"\r\n"
+				+ "_inf set [T_INF_unarmed, ["+tfInf_unarmed.getText()+"]];"						+"\r\n"
 				+ ""																				+"\r\n"
 				+ "//Recon"																			+"\r\n"
-				+ "_inf set [T_INF_recon_TL, ["+tfInf_recon_TL.getText()+"]];"						+"\r\n";
-				setInfantryArray("T_INF_recon_TL",tfInf_recon_TL );
-				setInfantryArray("T_INF_recon_rifleman",tfInf_recon_rifleman );
-				setInfantryArray("T_INF_recon_medic",tfInf_recon_medic );
-				setInfantryArray("T_INF_recon_exp",tfInf_recon_exp );
-				setInfantryArray("T_INF_recon_LAT",tfInf_recon_LAT );
-				setInfantryArray("T_INF_recon_marksman",tfInf_recon_marksman );
-				setInfantryArray("T_INF_recon_JTAC",tfInf_recon_JTAC );
-				Text = Text
+				+ "_inf set [T_INF_recon_TL, ["+tfInf_recon_TL.getText()+"]];"						+"\r\n"
+				+ "_inf set [T_INF_recon_rifleman, ["+tfInf_recon_rifleman.getText()+"]];"			+"\r\n"
+				+ "_inf set [T_INF_recon_medic, ["+tfInf_recon_medic.getText()+"]];"				+"\r\n"
+				+ "_inf set [T_INF_recon_exp, ["+tfInf_recon_exp.getText()+"]];"					+"\r\n"
+				+ "_inf set [T_INF_recon_LAT, ["+tfInf_recon_LAT.getText()+"]];"					+"\r\n"
+				+ "_inf set [T_INF_recon_marksman, ["+tfInf_recon_marksman.getText()+"]];"			+"\r\n"
+				+ "_inf set [T_INF_recon_JTAC, ["+tfInf_recon_JTAC.getText()+"]];"					+"\r\n"
 				+ ""																				+"\r\n"
-				+ "//Divers"																		+"\r\n";
-				setInfantryArray("T_INF_diver_TL",tfInf_diver_TL );
-				setInfantryArray("T_INF_diver_rifleman",tfInf_diver_rifleman );
-				setInfantryArray("T_INF_diver_exp",tfInf_diver_exp );
-				Text = Text
+				+ "//Divers"																		+"\r\n"
+				+ "_inf set [T_INF_diver_TL, ["+tfInf_diver_TL.getText()+"]];"						+"\r\n"
+				+ "_inf set [T_INF_diver_rifleman, ["+tfInf_diver_rifleman.getText()+"]];"			+"\r\n"
+				+ "_inf set [T_INF_diver_exp, ["+tfInf_diver_exp.getText()+"]];"					+"\r\n"
 				+ ""																				+"\r\n"
 				+ "//==== Vehicles ===="															+"\r\n"
 				+ "_veh = +(tDefault select T_VEH);"												+"\r\n"
-				+ "_veh set [T_VEH_SITE-1, nil];"													+"\r\n";
+				+ "_veh set [T_VEH_SITE-1, nil];"													+"\r\n"
 				//Vehicles start here																
-				
-				setVehicleArray("T_VEH_DEFAULT",tfVeh_Default );
-				setVehicleArray("T_VEH_car_unarmed",tfVeh_car_unarmed );
-				setVehicleArray("T_VEH_car_armed",tfVeh_car_armed );
-				setVehicleArray("T_VEH_MRAP_unarmed",tfVeh_MRAP_unarmed );
-				setVehicleArray("T_VEH_MRAP_HMG",tfVeh_MRAP_HMG );
-				setVehicleArray("T_VEH_MRAP_GMG",tfVeh_MRAP_GMG );
-				setVehicleArray("T_VEH_IFV",tfVeh_IFV );
-				setVehicleArray("T_VEH_APC",tfVeh_APC );
-				setVehicleArray("T_VEH_MBT",tfVeh_MBT );
-				setVehicleArray("T_VEH_MRLS",tfVeh_MRLS );
-				setVehicleArray("T_VEH_SPA",tfVeh_SPA );
-				setVehicleArray("T_VEH_SPAA",tfVeh_SPAA );
-				setVehicleArray("T_VEH_stat_HMG_high",tfVeh_stat_HMG_high );
-				setVehicleArray("T_VEH_stat_GNG_high",tfVeh_stat_GMG_high );
-				setVehicleArray("T_VEH_stat_HMG_low",tfVeh_stat_HMG_low );
-				setVehicleArray("T_VEH_stat_GMG_low",tfVeh_stat_GMG_low );
-				setVehicleArray("T_VEH_stat_AA",tfVeh_stat_AA );
-				setVehicleArray("T_VEH_stat_AT",tfVeh_stat_AT );
-				setVehicleArray("T_VEH_start_mortar_light",tfVeh_stat_mortar_light );
-				setVehicleArray("T_VEH_stat_mortar_heavy",tfVeh_stat_mortar_heavy );
-				setVehicleArray("T_VEH_heli_light",tfVeh_heli_light );
-				setVehicleArray("T_VEH_heli_heavy",tfVeh_heli_heavy );
-				setVehicleArray("T_VEH_heli_cargo",tfVeh_heli_cargo );
-				setVehicleArray("T_VEH_heli_attack",tfVeh_heli_attack );
-				setVehicleArray("T_VEH_plane_attack",tfVeh_plane_attack );
-				setVehicleArray("T_VEH_plane_fighter",tfVeh_plane_fighter );
-				setVehicleArray("T_VEH_plane_cargo",tfVeh_plane_cargo );
-				setVehicleArray("T_VEH_plane_unarmed",tfVeh_plane_unarmed );
-				setVehicleArray("T_VEH_plane_vtol",tfVeh_plane_VTOL );
-				setVehicleArray("T_VEH_boat_unarmed",tfVeh_boat_unarmed );
-				setVehicleArray("T_VEH_boat_armed",tfVeh_boat_armed );
-				setVehicleArray("T_VEH_personal",tfVeh_personal );
-				setVehicleArray("T_VEH_truck_inf",tfVeh_truck_inf );
-				setVehicleArray("T_VEH_truck_cargo",tfVeh_truck_cargo );
-				setVehicleArray("T_VEH_truck_ammo",tfVeh_truck_ammo );
-				setVehicleArray("T_VEH_truck_repair",tfVeh_truck_repair );
-				setVehicleArray("T_VEH_truck_medical",tfVeh_truck_medical );
-				setVehicleArray("T_VEH_truck_fuel",tfVeh_truck_fuel );
-				setVehicleArray("T_VEH_submarine",tfVeh_submarine );
-				Text = Text
+				+ "_veh set [T_VEH_DEFAULT, ["+tfVeh_Default.getText()+"]];"						+"\r\n"
+				+ "_veh set [T_VEH_car_unarmed, ["+tfVeh_car_unarmed.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_car_armed, ["+tfVeh_car_unarmed.getText()+"]];"					+"\r\n"
+				+ "_veh set [T_VEH_MRAP_unarmed, ["+tfVeh_MRAP_unarmed.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_MRAP_HMG, ["+tfVeh_MRAP_HMG.getText()+"]];"						+"\r\n"
+				+ "_veh set [T_VEH_MRAP_GMG, ["+tfVeh_MRAP_GMG.getText()+"]];"						+"\r\n"
+				+ "_veh set [T_VEH_IFV, ["+tfVeh_IFV.getText()+"]];"								+"\r\n"
+				+ "_veh set [T_VEH_APC, ["+tfVeh_APC.getText()+"]];"								+"\r\n"
+				+ "_veh set [T_VEH_MBT, ["+tfVeh_MBT.getText()+"]];"								+"\r\n"
+				+ "_veh set [T_VEH_MRLS, ["+tfVeh_MRLS.getText()+"]];"								+"\r\n"
+				+ "_veh set [T_VEH_SPA, ["+tfVeh_SPA.getText()+"]];"								+"\r\n"
+				+ "_veh set [T_VEH_SPAA, ["+tfVeh_SPAA.getText()+"]];"								+"\r\n"
+				+ "_veh set [T_VEH_stat_HMG_high, ["+tfVeh_stat_HMG_high.getText()+"]];"			+"\r\n"
+				+ "_veh set [T_VEH_stat_GNG_high, ["+tfVeh_stat_GMG_high.getText()+"]];"			+"\r\n"
+				+ "_veh set [T_VEH_stat_HMG_low, ["+tfVeh_stat_HMG_low.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_stat_GMG_low, ["+tfVeh_stat_GMG_low.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_stat_AA, ["+tfVeh_stat_AA.getText()+"]];"						+"\r\n"
+				+ "_veh set [T_VEH_stat_AT, ["+tfVeh_stat_AT.getText()+"]];"						+"\r\n"
+				+ "_veh set [T_VEH_start_mortar_light, ["+tfVeh_stat_mortar_light.getText()+"]];"	+"\r\n"
+				+ "_veh set [T_VEH_stat_mortar_heavy, ["+tfVeh_stat_mortar_heavy.getText()+"]];"	+"\r\n"
+				+ "_veh set [T_VEH_heli_light, ["+tfVeh_heli_light.getText()+"]];"					+"\r\n"
+				+ "_veh set [T_VEH_heli_heavy, ["+tfVeh_heli_heavy.getText()+"]];"					+"\r\n"
+				+ "_veh set [T_VEH_heli_cargo, ["+tfVeh_heli_cargo.getText()+"]];"					+"\r\n"
+				+ "_veh set [T_VEH_heli_attack, ["+tfVeh_heli_attack.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_plane_attack, ["+tfVeh_plane_attack.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_plane_fighter, ["+tfVeh_plane_fighter.getText()+"]];"			+"\r\n"
+				+ "_veh set [T_VEH_plane_cargo, ["+tfVeh_plane_cargo.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_plane_unarmed, ["+tfVeh_plane_unarmed.getText()+"]];"			+"\r\n"
+				+ "_veh set [T_VEH_plane_vtol, ["+tfVeh_plane_VTOL.getText()+"]];"					+"\r\n"
+				+ "_veh set [T_VEH_boat_unarmed, ["+tfVeh_boat_unarmed.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_boat_armed, ["+tfVeh_boat_armed.getText()+"]];"					+"\r\n"
+				+ "_veh set [T_VEH_personal, ["+tfVeh_personal.getText()+"]];"						+"\r\n"
+				+ "_veh set [T_VEH_truck_inf, ["+tfVeh_truck_inf.getText()+"]];"					+"\r\n"
+				+ "_veh set [T_VEH_truck_cargo, ["+tfVeh_truck_cargo.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_truck_ammo, ["+tfVeh_truck_ammo.getText()+"]];"					+"\r\n"
+				+ "_veh set [T_VEH_truck_repair, ["+tfVeh_truck_repair.getText()+"]];"				+"\r\n"
+				+ "_veh set [T_VEH_truck_medical, ["+tfVeh_truck_medical.getText()+"]];"			+"\r\n"
+				+ "_veh set [T_VEH_truck_fuel, ["+tfVeh_truck_fuel.getText()+"]];"					+"\r\n"
+				+ "_veh set [T_VEH_submarine, ["+tfVeh_submarine.getText()+"+]];"					+"\r\n"
 				+ ""																				+"\r\n"
 				+ "//==== Drones ===="																+"\r\n"
 				+ "_drone = +(tDefault select T_DRONE);"											+"\r\n"
-				+ "_drone set [T_DRONE_SIZE-1, nil];"												+"\r\n";
-				setDroneArray("T_DRONE_DEFAULT",tfDrone_Default );
-				Text = Text
-				+ ""																				+"\r\n";
-				setDroneArray("T_DRONE_UGV_unarmed",tfDrone_UGV_unarmed );
-				setDroneArray("T_DRONE_UGV_armed",tfDrone_UGV_armed );
-				setDroneArray("T_DRONE_plane_attack",tfDrone_plane_attack );
-				setDroneArray("T_DRONE_plane_unarmed",tfDrone_plane_unarmed );
-				setDroneArray("T_DRONE_heli_attack",tfDrone_heli_attack );
-				setDroneArray("T_DRONE_quadcopter",tfDrone_quadcopter );
-				setDroneArray("T_DRONE_designator",tfDrone_designator );
-				setDroneArray("T_DRONE_stat_HMG_low",tfDrone_stat_HMG_low );
-				setDroneArray("T_DRONE_stat_GMG_low",tfDrone_stat_GMG_low );
-				setDroneArray("T_DRONE_stat_AA",tfDrone_stat_AA );
-				Text = Text
+				+ "_drone set [T_DRONE_SIZE-1, nil];"												+"\r\n"
+				+ "_veh set [T_DRONE_DEFAULT , ["+tfDrone_Default.getText()+"]];"					+"\r\n"
+				+ ""																				+"\r\n"
+				+ "_drone set [T_DRONE_UGV_unarmed, ["+tfDrone_UGV_unarmed.getText()+"]];"			+"\r\n"
+				+ "_drone set [T_DRONE_UGV_armed, ["+tfDrone_UGV_armed.getText()+"]];"				+"\r\n"
+				+ "_drone set [T_DRONE_plane_attack, ["+tfDrone_plane_attack.getText()+"]];"		+"\r\n"
+				+ "_drone set [T_DRONE_plane_unarmed, ["+tfDrone_plane_unarmed.getText()+"]];"		+"\r\n"
+				+ "_drone set [T_DRONE_heli_attack, ["+tfDrone_heli_attack.getText()+"]];"			+"\r\n"
+				+ "_drone set [T_DRONE_quadcopter, ["+tfDrone_quadcopter.getText()+"]];"			+"\r\n"
+				+ "_drone set [T_DRONE_designator, ["+tfDrone_designator.getText()+"]];"			+"\r\n"
+				+ "_drone set [T_DRONE_stat_HMG_low, ["+tfDrone_stat_HMG_low.getText()+"]];"		+"\r\n"
+				+ "_drone set [T_DRONE_stat_GMG_low, ["+tfDrone_stat_GMG_low.getText()+"]];"		+"\r\n"
+				+ "_drone set [T_DRONE_stat_AA, ["+tfDrone_stat_AA.getText()+"]];"					+"\r\n"
 				+ ""																				+"\r\n"
 				+ "//==== Cargo ===="																+"\r\n"
 				+ "_cargo = +(tDefault select T_CARGO);"											+"\r\n"
@@ -1111,48 +1096,24 @@ public class GUIPresetBuilder extends JFrame {
 				+ ""																				+"\r\n"
 				+ "//End Template"																	+"\r\n"
 				+ "_array"																			+"\r\n"
-				+ "//Created using Vindicta Preset Builder Alpha version 05 made by Pi123263";
-		
-		//Misc save dialog things like setting the suggested name or avaible text files
-		FileNameExtensionFilter filter = new FileNameExtensionFilter("Arma SQF File", "sqf");
+				+ "//Created using Vindicta Preset Builder Alpha version 05 made by Pi123263";																			
+		FileWriter Schreib;
+		JFileChooser filechooser = new JFileChooser();
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files", "txt", "word","csv");
 		filechooser.setFileFilter(filter);
-		filechooser.setSelectedFile(new File(tfFactionName.getText()+".sqf"));
 		
-		//Open save dialog 
 		if(filechooser.showSaveDialog(null)== JFileChooser.APPROVE_OPTION) {
+			//datei speichern
 			try {
-				Schreib = new FileWriter(filechooser.getSelectedFile());
+				//speichern(filechooser.getSelectedFile());
+				//Schreib = new FileWriter(tfFactionName.getText()+".sqf");
+				Schreib = new FileWriter(filechooser.getSelectedFile()+".sqf");
 				Schreib.write(Text);
 				Schreib.close();
 			} catch (IOException e1) {
-				JOptionPane.showMessageDialog(null, "Error: " +e1.getMessage());
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, "Fehler: " +e1.getMessage());
 			}
 		}
-	}
-	public void setInfantryArray(String classnamearray, JTextField Classname) {
-		//Method that generates the _inf array text lines
-		if(Classname.getText().isEmpty()) {
-			Text = Text + "//_inf set ["+classnamearray+", ["+Classname.getText()+"]];		\r\n";
-		} else {
-			Text = Text + "_inf set ["+classnamearray+", ["+Classname.getText()+"]];		\r\n";
-		}
-	}
-	public void setVehicleArray(String classnamearray, JTextField Classname) {
-		//Method that generates the _veh array text lines
-		if(Classname.getText().isEmpty()) {
-			Text = Text + "//_veh set ["+classnamearray+", ["+Classname.getText()+"]];		\r\n";
-		} else {
-			Text = Text + "_veh set ["+classnamearray+", ["+Classname.getText()+"]];		\r\n";
-		}
-		
-	}
-	public void setDroneArray(String classnamearray, JTextField Classname) {
-		//Method that generates the _drone array text lines
-		if(Classname.getText().isEmpty()) {
-			Text = Text + "//_drone set ["+classnamearray+", ["+Classname.getText()+"]];		\r\n";
-		} else {
-			Text = Text + "_drone set ["+classnamearray+", ["+Classname.getText()+"]];		\r\n";
-		}
-		
 	}
 }
