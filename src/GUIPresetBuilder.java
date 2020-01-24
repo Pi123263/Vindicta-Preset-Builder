@@ -1,3 +1,4 @@
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -5,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -21,8 +24,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class GUIPresetBuilder extends JFrame {
 
-	/**
-	 * 
+	/*
+	 Name: Vindicta Preset Builder GUI Tool
+	 Author: Pi123263
+	 Date: 23.01.2019
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -112,7 +117,7 @@ public class GUIPresetBuilder extends JFrame {
 	private JTextField tfInf_recon_marksman;
 	private JTextField tfInf_recon_medic;
 	public String Text;
-	public String VersionDescriptor = "Alpha Version 06.1";
+	public String VersionDescriptor = "Alpha Version 07";
 
 	/**
 	 * Launch the application.
@@ -142,7 +147,7 @@ public class GUIPresetBuilder extends JFrame {
 		setResizable(false);
 		setTitle("Vindicta Preset Builder"+ VersionDescriptor);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 623);
+		setBounds(100, 100, 954, 623);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -386,7 +391,7 @@ public class GUIPresetBuilder extends JFrame {
 		contentPane.add(lblRecon);
 		
 		JLabel lblTeamLeader = new JLabel("Team Leader");
-		lblTeamLeader.setBounds(195, 229, 79, 14);
+		lblTeamLeader.setBounds(195, 229, 62, 14);
 		contentPane.add(lblTeamLeader);
 		
 		tfInf_recon_TL = new JTextField();
@@ -608,38 +613,38 @@ public class GUIPresetBuilder extends JFrame {
 		
 		tfVeh_heli_light = new JTextField();
 		tfVeh_heli_light.setColumns(10);
-		tfVeh_heli_light.setBounds(690, 113, 86, 18);
+		tfVeh_heli_light.setBounds(666, 114, 86, 18);
 		contentPane.add(tfVeh_heli_light);
 		
 		JLabel lblLightHeli = new JLabel("Heli (Light)");
-		lblLightHeli.setBounds(601, 116, 79, 14);
+		lblLightHeli.setBounds(577, 117, 79, 14);
 		contentPane.add(lblLightHeli);
 		
 		tfVeh_stat_mortar_heavy = new JTextField();
 		tfVeh_stat_mortar_heavy.setColumns(10);
-		tfVeh_stat_mortar_heavy.setBounds(690, 85, 86, 18);
+		tfVeh_stat_mortar_heavy.setBounds(666, 86, 86, 18);
 		contentPane.add(tfVeh_stat_mortar_heavy);
 		
 		JLabel lblMortarheavy = new JLabel("Mortar (Heavy)");
-		lblMortarheavy.setBounds(601, 88, 79, 14);
+		lblMortarheavy.setBounds(577, 89, 79, 14);
 		contentPane.add(lblMortarheavy);
 		
 		tfVeh_stat_mortar_light = new JTextField();
 		tfVeh_stat_mortar_light.setColumns(10);
-		tfVeh_stat_mortar_light.setBounds(690, 57, 86, 18);
+		tfVeh_stat_mortar_light.setBounds(666, 58, 86, 18);
 		contentPane.add(tfVeh_stat_mortar_light);
 		
 		JLabel lblMortarlight = new JLabel("Mortar (Light)");
-		lblMortarlight.setBounds(601, 60, 79, 14);
+		lblMortarlight.setBounds(577, 61, 79, 14);
 		contentPane.add(lblMortarlight);
 		
 		tfVeh_stat_AT = new JTextField();
 		tfVeh_stat_AT.setColumns(10);
-		tfVeh_stat_AT.setBounds(690, 29, 86, 18);
+		tfVeh_stat_AT.setBounds(666, 30, 86, 18);
 		contentPane.add(tfVeh_stat_AT);
 		
 		JLabel lblStaticAt = new JLabel("Static AT");
-		lblStaticAt.setBounds(601, 32, 79, 14);
+		lblStaticAt.setBounds(577, 33, 79, 14);
 		contentPane.add(lblStaticAt);
 		
 		tfVeh_stat_AA = new JTextField();
@@ -671,263 +676,266 @@ public class GUIPresetBuilder extends JFrame {
 		
 		tfVeh_heli_heavy = new JTextField();
 		tfVeh_heli_heavy.setColumns(10);
-		tfVeh_heli_heavy.setBounds(690, 142, 86, 18);
+		tfVeh_heli_heavy.setBounds(666, 143, 86, 18);
 		contentPane.add(tfVeh_heli_heavy);
 		
 		JLabel lblHeavyHeli = new JLabel("Heli (Heavy)");
-		lblHeavyHeli.setBounds(601, 145, 79, 14);
+		lblHeavyHeli.setBounds(577, 146, 79, 14);
 		contentPane.add(lblHeavyHeli);
 		
 		tfVeh_heli_cargo = new JTextField();
 		tfVeh_heli_cargo.setColumns(10);
-		tfVeh_heli_cargo.setBounds(690, 169, 86, 18);
+		tfVeh_heli_cargo.setBounds(666, 170, 86, 18);
 		contentPane.add(tfVeh_heli_cargo);
 		
 		JLabel lblHelicargo = new JLabel("Heli (Cargo)");
-		lblHelicargo.setBounds(601, 172, 79, 14);
+		lblHelicargo.setBounds(577, 173, 79, 14);
 		contentPane.add(lblHelicargo);
 		
 		JLabel lblHeliattack = new JLabel("Heli (Attack)");
-		lblHeliattack.setBounds(601, 200, 79, 14);
+		lblHeliattack.setBounds(577, 201, 79, 14);
 		contentPane.add(lblHeliattack);
 		
 		tfVeh_heli_attack = new JTextField();
 		tfVeh_heli_attack.setColumns(10);
-		tfVeh_heli_attack.setBounds(690, 197, 86, 18);
+		tfVeh_heli_attack.setBounds(666, 198, 86, 18);
 		contentPane.add(tfVeh_heli_attack);
 		
 		JLabel lblPlaneattack = new JLabel("Plane (Attack)");
-		lblPlaneattack.setBounds(601, 227, 79, 14);
+		lblPlaneattack.setBounds(577, 228, 79, 14);
 		contentPane.add(lblPlaneattack);
 		
 		tfVeh_plane_attack = new JTextField();
 		tfVeh_plane_attack.setColumns(10);
-		tfVeh_plane_attack.setBounds(690, 224, 86, 18);
+		tfVeh_plane_attack.setBounds(666, 225, 86, 18);
 		contentPane.add(tfVeh_plane_attack);
 		
 		JLabel lblPlanefighter = new JLabel("Plane (Fighter)");
-		lblPlanefighter.setBounds(601, 255, 79, 14);
+		lblPlanefighter.setBounds(577, 256, 79, 14);
 		contentPane.add(lblPlanefighter);
 		
 		tfVeh_plane_fighter = new JTextField();
 		tfVeh_plane_fighter.setColumns(10);
-		tfVeh_plane_fighter.setBounds(690, 252, 86, 18);
+		tfVeh_plane_fighter.setBounds(666, 253, 86, 18);
 		contentPane.add(tfVeh_plane_fighter);
 		
 		JLabel lblPlanecargo = new JLabel("Plane (Cargo)");
-		lblPlanecargo.setBounds(601, 283, 79, 14);
+		lblPlanecargo.setBounds(577, 284, 79, 14);
 		contentPane.add(lblPlanecargo);
 		
 		tfVeh_plane_cargo = new JTextField();
 		tfVeh_plane_cargo.setColumns(10);
-		tfVeh_plane_cargo.setBounds(690, 280, 86, 18);
+		tfVeh_plane_cargo.setBounds(666, 281, 86, 18);
 		contentPane.add(tfVeh_plane_cargo);
 		
 		JLabel lblPlaneunarmed = new JLabel("Plane (Unarmed)");
-		lblPlaneunarmed.setBounds(601, 310, 86, 14);
+		lblPlaneunarmed.setBounds(577, 311, 86, 14);
 		contentPane.add(lblPlaneunarmed);
 		
 		tfVeh_plane_unarmed = new JTextField();
 		tfVeh_plane_unarmed.setColumns(10);
-		tfVeh_plane_unarmed.setBounds(690, 307, 86, 18);
+		tfVeh_plane_unarmed.setBounds(666, 308, 86, 18);
 		contentPane.add(tfVeh_plane_unarmed);
 		
 		JLabel lblPlanevtol = new JLabel("Plane (VTOL)");
-		lblPlanevtol.setBounds(601, 338, 79, 14);
+		lblPlanevtol.setBounds(577, 339, 79, 14);
 		contentPane.add(lblPlanevtol);
 		
 		tfVeh_plane_VTOL = new JTextField();
 		tfVeh_plane_VTOL.setColumns(10);
-		tfVeh_plane_VTOL.setBounds(690, 335, 86, 18);
+		tfVeh_plane_VTOL.setBounds(666, 336, 86, 18);
 		contentPane.add(tfVeh_plane_VTOL);
 		
 		JLabel lblBoatunarmed = new JLabel("Boat (Unarmed)");
-		lblBoatunarmed.setBounds(601, 366, 79, 14);
+		lblBoatunarmed.setBounds(577, 367, 79, 14);
 		contentPane.add(lblBoatunarmed);
 		
 		tfVeh_boat_unarmed = new JTextField();
 		tfVeh_boat_unarmed.setColumns(10);
-		tfVeh_boat_unarmed.setBounds(690, 363, 86, 18);
+		tfVeh_boat_unarmed.setBounds(666, 364, 86, 18);
 		contentPane.add(tfVeh_boat_unarmed);
 		
 		JLabel lblBoatarmed = new JLabel("Boat (Armed)");
-		lblBoatarmed.setBounds(601, 394, 79, 14);
+		lblBoatarmed.setBounds(577, 395, 79, 14);
 		contentPane.add(lblBoatarmed);
 		
 		tfVeh_boat_armed = new JTextField();
 		tfVeh_boat_armed.setColumns(10);
-		tfVeh_boat_armed.setBounds(690, 391, 86, 18);
+		tfVeh_boat_armed.setBounds(666, 392, 86, 18);
 		contentPane.add(tfVeh_boat_armed);
 		
 		JLabel lblPersonalVic = new JLabel("Personal Vehicle");
-		lblPersonalVic.setBounds(601, 423, 79, 14);
+		lblPersonalVic.setBounds(577, 424, 79, 14);
 		contentPane.add(lblPersonalVic);
 		
 		tfVeh_personal = new JTextField();
 		tfVeh_personal.setColumns(10);
-		tfVeh_personal.setBounds(690, 420, 86, 18);
+		tfVeh_personal.setBounds(666, 421, 86, 18);
 		contentPane.add(tfVeh_personal);
 		
 		JLabel lblTruckinfantry = new JLabel("Truck (Infantry)");
-		lblTruckinfantry.setBounds(601, 451, 79, 14);
+		lblTruckinfantry.setBounds(577, 452, 79, 14);
 		contentPane.add(lblTruckinfantry);
 		
 		tfVeh_truck_inf = new JTextField();
 		tfVeh_truck_inf.setColumns(10);
-		tfVeh_truck_inf.setBounds(690, 448, 86, 18);
+		tfVeh_truck_inf.setBounds(666, 449, 86, 18);
 		contentPane.add(tfVeh_truck_inf);
 		
 		JLabel lblTruckcargo = new JLabel("Truck (Cargo)");
-		lblTruckcargo.setBounds(601, 479, 79, 14);
+		lblTruckcargo.setBounds(577, 480, 79, 14);
 		contentPane.add(lblTruckcargo);
 		
 		JLabel lblTruckammo = new JLabel("Truck (Ammo)");
-		lblTruckammo.setBounds(601, 506, 79, 14);
+		lblTruckammo.setBounds(577, 507, 79, 14);
 		contentPane.add(lblTruckammo);
 		
 		JLabel lblTruckrepair = new JLabel("Truck (Repair)");
-		lblTruckrepair.setBounds(799, 33, 79, 14);
+		lblTruckrepair.setBounds(762, 33, 79, 14);
 		contentPane.add(lblTruckrepair);
 		
 		tfVeh_truck_repair = new JTextField();
 		tfVeh_truck_repair.setColumns(10);
-		tfVeh_truck_repair.setBounds(888, 30, 86, 18);
+		tfVeh_truck_repair.setBounds(851, 30, 86, 18);
 		contentPane.add(tfVeh_truck_repair);
 		
 		tfVeh_truck_ammo = new JTextField();
 		tfVeh_truck_ammo.setColumns(10);
-		tfVeh_truck_ammo.setBounds(690, 503, 86, 18);
+		tfVeh_truck_ammo.setBounds(666, 504, 86, 18);
 		contentPane.add(tfVeh_truck_ammo);
 		
 		tfVeh_truck_cargo = new JTextField();
 		tfVeh_truck_cargo.setColumns(10);
-		tfVeh_truck_cargo.setBounds(690, 476, 86, 18);
+		tfVeh_truck_cargo.setBounds(666, 477, 86, 18);
 		contentPane.add(tfVeh_truck_cargo);
 		
 		JLabel lblTruckmedical = new JLabel("Truck (Medical)");
-		lblTruckmedical.setBounds(799, 61, 79, 14);
+		lblTruckmedical.setBounds(762, 61, 79, 14);
 		contentPane.add(lblTruckmedical);
 		
 		tfVeh_truck_medical = new JTextField();
 		tfVeh_truck_medical.setColumns(10);
-		tfVeh_truck_medical.setBounds(888, 58, 86, 18);
+		tfVeh_truck_medical.setBounds(851, 58, 86, 18);
 		contentPane.add(tfVeh_truck_medical);
 		
 		tfVeh_truck_fuel = new JTextField();
 		tfVeh_truck_fuel.setColumns(10);
-		tfVeh_truck_fuel.setBounds(888, 86, 86, 18);
+		tfVeh_truck_fuel.setBounds(851, 86, 86, 18);
 		contentPane.add(tfVeh_truck_fuel);
 		
 		JLabel lblTruckfuel = new JLabel("Truck (Fuel)");
-		lblTruckfuel.setBounds(799, 89, 79, 14);
+		lblTruckfuel.setBounds(762, 89, 79, 14);
 		contentPane.add(lblTruckfuel);
 		
 		JLabel lblSubmarine = new JLabel("Submarine");
-		lblSubmarine.setBounds(799, 116, 79, 14);
+		lblSubmarine.setBounds(762, 116, 79, 14);
 		contentPane.add(lblSubmarine);
 		
 		tfVeh_submarine = new JTextField();
 		tfVeh_submarine.setColumns(10);
-		tfVeh_submarine.setBounds(888, 113, 86, 18);
+		tfVeh_submarine.setBounds(851, 113, 86, 18);
 		contentPane.add(tfVeh_submarine);
 		
 		tfDrone_Default = new JTextField();
 		tfDrone_Default.setColumns(10);
-		tfDrone_Default.setBounds(888, 169, 86, 18);
+		tfDrone_Default.setBounds(851, 169, 86, 18);
 		contentPane.add(tfDrone_Default);
 		
 		JLabel lblDefaultDrone = new JLabel("Default Drone");
-		lblDefaultDrone.setBounds(799, 172, 79, 14);
+		lblDefaultDrone.setBounds(762, 172, 79, 14);
 		contentPane.add(lblDefaultDrone);
 		
 		JLabel lblUgvunarmed = new JLabel("UGV (Unarmed)");
-		lblUgvunarmed.setBounds(799, 200, 79, 14);
+		lblUgvunarmed.setBounds(762, 200, 79, 14);
 		contentPane.add(lblUgvunarmed);
 		
 		tfDrone_UGV_unarmed = new JTextField();
 		tfDrone_UGV_unarmed.setColumns(10);
-		tfDrone_UGV_unarmed.setBounds(888, 197, 86, 18);
+		tfDrone_UGV_unarmed.setBounds(851, 197, 86, 18);
 		contentPane.add(tfDrone_UGV_unarmed);
 		
 		tfDrone_UGV_armed = new JTextField();
 		tfDrone_UGV_armed.setColumns(10);
-		tfDrone_UGV_armed.setBounds(888, 224, 86, 18);
+		tfDrone_UGV_armed.setBounds(851, 224, 86, 18);
 		contentPane.add(tfDrone_UGV_armed);
 		
 		JLabel lblUgvarmed = new JLabel("UGV (Armed)");
-		lblUgvarmed.setBounds(799, 227, 79, 14);
+		lblUgvarmed.setBounds(762, 227, 79, 14);
 		contentPane.add(lblUgvarmed);
 		
 		JLabel lblPlaneattack_1 = new JLabel("UAV (Armed)");
-		lblPlaneattack_1.setBounds(799, 255, 79, 14);
+		lblPlaneattack_1.setBounds(762, 255, 79, 14);
 		contentPane.add(lblPlaneattack_1);
 		
 		tfDrone_plane_attack = new JTextField();
 		tfDrone_plane_attack.setColumns(10);
-		tfDrone_plane_attack.setBounds(888, 252, 86, 18);
+		tfDrone_plane_attack.setBounds(851, 252, 86, 18);
 		contentPane.add(tfDrone_plane_attack);
 		
 		tfDrone_heli_attack = new JTextField();
 		tfDrone_heli_attack.setColumns(10);
-		tfDrone_heli_attack.setBounds(888, 307, 86, 18);
+		tfDrone_heli_attack.setBounds(851, 307, 86, 18);
 		contentPane.add(tfDrone_heli_attack);
 		
 		JLabel lblHeliattack_1 = new JLabel("Heli (Attack)");
-		lblHeliattack_1.setBounds(799, 310, 79, 14);
+		lblHeliattack_1.setBounds(762, 310, 79, 14);
 		contentPane.add(lblHeliattack_1);
 		
 		JLabel lblQuadcopter = new JLabel("Quadcopter");
-		lblQuadcopter.setBounds(799, 338, 79, 14);
+		lblQuadcopter.setBounds(762, 338, 79, 14);
 		contentPane.add(lblQuadcopter);
 		
 		tfDrone_quadcopter = new JTextField();
 		tfDrone_quadcopter.setColumns(10);
-		tfDrone_quadcopter.setBounds(888, 335, 86, 18);
+		tfDrone_quadcopter.setBounds(851, 335, 86, 18);
 		contentPane.add(tfDrone_quadcopter);
 		
 		tfDrone_designator = new JTextField();
 		tfDrone_designator.setColumns(10);
-		tfDrone_designator.setBounds(888, 364, 86, 18);
+		tfDrone_designator.setBounds(851, 364, 86, 18);
 		contentPane.add(tfDrone_designator);
 		
 		JLabel lblDesignator = new JLabel("Designator");
-		lblDesignator.setBounds(799, 367, 79, 14);
+		lblDesignator.setBounds(762, 367, 79, 14);
 		contentPane.add(lblDesignator);
 		
 		JLabel lblStaticMg = new JLabel("Static MG");
-		lblStaticMg.setBounds(799, 394, 79, 14);
+		lblStaticMg.setBounds(762, 394, 79, 14);
 		contentPane.add(lblStaticMg);
 		
 		tfDrone_stat_HMG_low = new JTextField();
 		tfDrone_stat_HMG_low.setColumns(10);
-		tfDrone_stat_HMG_low.setBounds(888, 391, 86, 18);
+		tfDrone_stat_HMG_low.setBounds(851, 391, 86, 18);
 		contentPane.add(tfDrone_stat_HMG_low);
 		
 		tfDrone_stat_GMG_low = new JTextField();
 		tfDrone_stat_GMG_low.setColumns(10);
-		tfDrone_stat_GMG_low.setBounds(888, 419, 86, 18);
+		tfDrone_stat_GMG_low.setBounds(851, 419, 86, 18);
 		contentPane.add(tfDrone_stat_GMG_low);
 		
 		JLabel lblStaticGl = new JLabel("Static GL");
-		lblStaticGl.setBounds(799, 422, 79, 14);
+		lblStaticGl.setBounds(762, 422, 79, 14);
 		contentPane.add(lblStaticGl);
 		
 		JLabel lblStaticAa_1 = new JLabel("Static AA");
-		lblStaticAa_1.setBounds(799, 451, 79, 14);
+		lblStaticAa_1.setBounds(762, 451, 79, 14);
 		contentPane.add(lblStaticAa_1);
 		
 		tfDrone_stat_AA = new JTextField();
 		tfDrone_stat_AA.setColumns(10);
-		tfDrone_stat_AA.setBounds(888, 448, 86, 18);
+		tfDrone_stat_AA.setBounds(851, 448, 86, 18);
 		contentPane.add(tfDrone_stat_AA);
 		
 		JButton btnHelp = new JButton("Help");
 		btnHelp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null,"This Preset Builder works by entering the classnames copied stright from the 3DEN Editor into the fitting Classname field and then clicking the 'Generate' Button, then a save window will open which lets you select a location for the preset file to be saved.");
+				JOptionPane.showMessageDialog(null,	"This Preset Builder works by entering the classnames copied stright from the 3DEN Editor into the fitting Classname field and then clicking the 'Generate' Button.\r\n" + 
+						"							 A save window will then open which lets you select a location for the preset file to be saved.\r\n" + 
+						"							 See the ReadMe file on the GitHub for a more detailed guide.");
+				
 			}
 		});
-		btnHelp.setBounds(392, 502, 175, 20);
+		btnHelp.setBounds(392, 503, 175, 18);
 		contentPane.add(btnHelp);
 		
 		JButton btnGenerate = new JButton("Generate");
@@ -940,21 +948,21 @@ public class GUIPresetBuilder extends JFrame {
 				}
 			}
 		});
-		btnGenerate.setBounds(392, 559, 582, 20);
+		btnGenerate.setBounds(392, 559, 545, 20);
 		contentPane.add(btnGenerate);
 		
 		JLabel lblDrones = new JLabel("Drones");
 		lblDrones.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblDrones.setBounds(799, 145, 175, 14);
+		lblDrones.setBounds(762, 145, 175, 14);
 		contentPane.add(lblDrones);
 		
 		JLabel lblUavunarmed = new JLabel("UAV (Unarmed)");
-		lblUavunarmed.setBounds(799, 283, 79, 14);
+		lblUavunarmed.setBounds(762, 283, 79, 14);
 		contentPane.add(lblUavunarmed);
 		
 		tfDrone_plane_unarmed = new JTextField();
 		tfDrone_plane_unarmed.setColumns(10);
-		tfDrone_plane_unarmed.setBounds(888, 280, 86, 18);
+		tfDrone_plane_unarmed.setBounds(851, 280, 86, 18);
 		contentPane.add(tfDrone_plane_unarmed);
 		
 		tfInf_recon_marksman = new JTextField();
@@ -970,6 +978,45 @@ public class GUIPresetBuilder extends JFrame {
 		JLabel lblVindictaPresetBuilder = new JLabel("Vindicta Preset Builder made by Pi123263");
 		lblVindictaPresetBuilder.setBounds(393, 544, 384, 14);
 		contentPane.add(lblVindictaPresetBuilder);
+		
+		JButton btnGithub = new JButton("Preset Builder GitHub");
+		btnGithub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Desktop.getDesktop().browse(new URL("https://github.com/Pi123263/Vindicta-Preset-Builder").toURI());
+				} catch (IOException | URISyntaxException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		btnGithub.setBounds(762, 476, 175, 18);
+		contentPane.add(btnGithub);
+		
+		JButton btnVindictaGitHub = new JButton("Vindicta GitHub");
+		btnVindictaGitHub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Desktop.getDesktop().browse(new URL("https://github.com/Sparker95/Vindicta").toURI());
+				} catch (IOException | URISyntaxException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		btnVindictaGitHub.setBounds(762, 503, 175, 18);
+		contentPane.add(btnVindictaGitHub);
+		
+		JButton btnVindictaDiscord = new JButton("Vindicta Discord");
+		btnVindictaDiscord.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Desktop.getDesktop().browse(new URL("https://discord.gg/rDhxKBp").toURI());
+				} catch (IOException | URISyntaxException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		btnVindictaDiscord.setBounds(762, 530, 175, 18);
+		contentPane.add(btnVindictaDiscord);
 	}
 	public void Generate() throws IOException {
 		FileWriter Schreib;
