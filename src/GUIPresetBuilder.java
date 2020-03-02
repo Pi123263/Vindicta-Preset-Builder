@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JComboBox;
 
 public class GUIPresetBuilder extends JFrame {
 
@@ -29,8 +30,8 @@ public class GUIPresetBuilder extends JFrame {
 	 Author: Pi123263
 	 Date: 23.01.2019
 	 */
+	
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 	private JTextField tfInf_AA;
 	private JTextField tfInf_AT;
 	private JTextField tfInf_ammo;
@@ -117,7 +118,12 @@ public class GUIPresetBuilder extends JFrame {
 	private JTextField tfInf_recon_marksman;
 	private JTextField tfInf_recon_medic;
 	public String Text;
-	public String VersionDescriptor = "Alpha Version 07";
+	public String VersionDescriptor = "Alpha Version 08";
+	private JPanel contentPane;
+	private JTextField tfDesc;
+	private JTextField tfSysName;
+	private JTextField tfReqAddons;
+	private JComboBox<String> cBSide;
 
 	/**
 	 * Launch the application.
@@ -147,7 +153,7 @@ public class GUIPresetBuilder extends JFrame {
 		setResizable(false);
 		setTitle("Vindicta Preset Builder"+ VersionDescriptor);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 954, 623);
+		setBounds(100, 100, 954, 656);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -269,12 +275,12 @@ public class GUIPresetBuilder extends JFrame {
 		
 		tfFactionName = new JTextField();
 		tfFactionName.setColumns(10);
-		tfFactionName.setBounds(99, 560, 271, 18);
+		tfFactionName.setBounds(99, 536, 271, 18);
 		contentPane.add(tfFactionName);
 		
 		JLabel label_11 = new JLabel("Faction Name");
 		label_11.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label_11.setBounds(10, 563, 79, 14);
+		label_11.setBounds(10, 539, 79, 14);
 		contentPane.add(label_11);
 		
 		JLabel label_12 = new JLabel("Soldiers");
@@ -477,7 +483,7 @@ public class GUIPresetBuilder extends JFrame {
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(380, 0, 2, 584);
+		separator.setBounds(380, 0, 2, 627);
 		contentPane.add(separator);
 		
 		JLabel lblVehicles = new JLabel("Vehicles");
@@ -948,7 +954,7 @@ public class GUIPresetBuilder extends JFrame {
 				}
 			}
 		});
-		btnGenerate.setBounds(392, 559, 545, 20);
+		btnGenerate.setBounds(392, 594, 545, 20);
 		contentPane.add(btnGenerate);
 		
 		JLabel lblDrones = new JLabel("Drones");
@@ -976,7 +982,7 @@ public class GUIPresetBuilder extends JFrame {
 		contentPane.add(tfInf_recon_medic);
 		
 		JLabel lblVindictaPresetBuilder = new JLabel("Vindicta Preset Builder made by Pi123263");
-		lblVindictaPresetBuilder.setBounds(393, 544, 384, 14);
+		lblVindictaPresetBuilder.setBounds(393, 579, 197, 14);
 		contentPane.add(lblVindictaPresetBuilder);
 		
 		JButton btnGithub = new JButton("Preset Builder GitHub");
@@ -989,7 +995,7 @@ public class GUIPresetBuilder extends JFrame {
 				}
 			}
 		});
-		btnGithub.setBounds(762, 476, 175, 18);
+		btnGithub.setBounds(762, 511, 175, 18);
 		contentPane.add(btnGithub);
 		
 		JButton btnVindictaGitHub = new JButton("Vindicta GitHub");
@@ -1002,7 +1008,7 @@ public class GUIPresetBuilder extends JFrame {
 				}
 			}
 		});
-		btnVindictaGitHub.setBounds(762, 503, 175, 18);
+		btnVindictaGitHub.setBounds(762, 538, 175, 18);
 		contentPane.add(btnVindictaGitHub);
 		
 		JButton btnVindictaDiscord = new JButton("Vindicta Discord");
@@ -1015,8 +1021,54 @@ public class GUIPresetBuilder extends JFrame {
 				}
 			}
 		});
-		btnVindictaDiscord.setBounds(762, 530, 175, 18);
+		btnVindictaDiscord.setBounds(762, 565, 175, 18);
 		contentPane.add(btnVindictaDiscord);
+		
+		tfDesc = new JTextField();
+		tfDesc.setColumns(10);
+		tfDesc.setBounds(99, 559, 271, 18);
+		contentPane.add(tfDesc);
+		
+		JLabel lblFactionDescription = new JLabel("Description");
+		lblFactionDescription.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblFactionDescription.setBounds(10, 562, 91, 14);
+		contentPane.add(lblFactionDescription);
+		
+		JLabel lblSysName = new JLabel("Sys. Name");
+		lblSysName.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblSysName.setBounds(10, 585, 91, 14);
+		contentPane.add(lblSysName);
+		
+		tfSysName = new JTextField();
+		tfSysName.setColumns(10);
+		tfSysName.setBounds(99, 582, 86, 18);
+		contentPane.add(tfSysName);
+		
+		JLabel lblSide = new JLabel("Side");
+		lblSide.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblSide.setBounds(195, 585, 91, 14);
+		contentPane.add(lblSide);
+		
+		cBSide = new JComboBox<String>();
+		cBSide.setBounds(252, 582, 118, 18);
+		contentPane.add(cBSide);
+		cBSide.addItem("T_FACTION_military");
+		cBSide.addItem("T_FACTION_police");
+		//cBSide.addItem("T_FACTION_civillian");
+		
+		tfReqAddons = new JTextField();
+		tfReqAddons.setColumns(10);
+		tfReqAddons.setBounds(99, 605, 271, 18);
+		contentPane.add(tfReqAddons);
+		
+		JLabel lblReqAddons = new JLabel("Req. Addons");
+		lblReqAddons.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblReqAddons.setBounds(10, 608, 91, 14);
+		contentPane.add(lblReqAddons);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(0, 530, 382, 2);
+		contentPane.add(separator_1);
 	}
 	public void Generate() throws IOException {
 		FileWriter Schreib;
@@ -1029,6 +1081,12 @@ public class GUIPresetBuilder extends JFrame {
 				+ "_array = [];"																	+"\r\n"
 				+ ""																				+"\r\n"
 				+ "_array set [T_Size-1, nil];"														+"\r\n"
+				+ ""																				+"\r\n"
+				+ "//Name, description, faction, addons, etc"										+"\r\n"
+				+ "_array set [T_NAME, \""+tfSysName.getText()+"\"];"								+"\r\n"
+				+ "_array set [T_DESCRIPTION,\""+tfDesc.getText()+"\"]; "							+"\r\n"
+				+ "_array set [T_FACTION, "+cBSide.getSelectedItem()+"];"							+"\r\n"
+				+ "_array set [T_REQUIRED_ADDONS, [\""+tfReqAddons.getText()+"\"]];"				+"\r\n"
 				+ ""																				+"\r\n"
 				+ "//==== Infantry ===="															+"\r\n"
 				+ "_inf = [];"																		+"\r\n"
