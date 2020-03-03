@@ -118,7 +118,7 @@ public class GUIPresetBuilder extends JFrame {
 	private JTextField tfInf_recon_marksman;
 	private JTextField tfInf_recon_medic;
 	public String Text;
-	public String VersionDescriptor = "Alpha Version 08";
+	public String VersionDescriptor = "Alpha Version 08.1";
 	private JPanel contentPane;
 	private JTextField tfDesc;
 	private JTextField tfSysName;
@@ -1052,6 +1052,7 @@ public class GUIPresetBuilder extends JFrame {
 		cBSide = new JComboBox<String>();
 		cBSide.setBounds(252, 582, 118, 18);
 		contentPane.add(cBSide);
+		cBSide.addItem("");
 		cBSide.addItem("T_FACTION_military");
 		cBSide.addItem("T_FACTION_police");
 		//cBSide.addItem("T_FACTION_civillian");
@@ -1071,6 +1072,12 @@ public class GUIPresetBuilder extends JFrame {
 		contentPane.add(separator_1);
 	}
 	public void Generate() throws IOException {
+		//required field check
+		if(tfSysName.getText()=="" || tfDesc.getText()=="" || cBSide.getSelectedItem()=="" || tfReqAddons.getText()=="") {
+			JOptionPane.showMessageDialog(null,  "One of the required fields is missing!");
+			return;
+		}
+		
 		FileWriter Schreib;
 		JFileChooser filechooser = new JFileChooser();
 		//Start of preset text generation
